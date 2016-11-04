@@ -1,5 +1,5 @@
 function AssetsManager(){
-	this.debugMode = true;
+	this.debugMode = true; //needed Logger
 
 	this.scripts = [
 		'assets/js/logger.js',
@@ -30,6 +30,9 @@ AssetsManager.prototype.getLoadedScriptsList = function() {
 AssetsManager.prototype.addScript = function(pathToScriptFile) {
 	this.scripts.push(pathToScriptFile);
 	this.loadAssets();
+	if (assetsManager.debugMode) {
+		console.log('Loaded Script:', pathToScriptFile, '\nFrom >>> ', this.addScript.caller);
+	}
 }
 
 window.assetsManager = new AssetsManager();
